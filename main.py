@@ -2,17 +2,18 @@
 """
 Contains the entry point of the TUI application
 """
-from ui import app
+import curses
+from ui.curses import App
 
-def main():
+def main(stdscr):
     """
-    The entry point of the program
+    The entry point of the program, wrapped by curses.
     """
-    try:
-        app.start()
-        app.window()
-    except:
-        app.close()
+    app = App(stdscr)
+    app.start()
 
 if __name__ == "__main__":
-    main()
+    try:
+        curses.wrapper(main)
+    except Exception as e:
+        print(f"An error occurred: {e}")

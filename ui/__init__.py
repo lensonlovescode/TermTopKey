@@ -2,6 +2,4 @@
 """
 Creates the app instance from the App class
 """
-from ui.curses import App
 
-app = App()
